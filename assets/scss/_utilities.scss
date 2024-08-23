@@ -1,0 +1,471 @@
+/* Utilities */
+.w-100 {
+  width: 100% !important;
+}
+
+// Definimos los puntos de quiebre de Bootstrap 5
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+// ================================== PADDING & MARGIN ==================================
+// Definimos los tamaños y los valores correspondientes
+$sizes: (0, 1, 2, 3, 4, 5);
+$spacers: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 1rem,
+  4: 1.5rem,
+  5: 3rem,
+);
+
+@mixin generate-spacing-classes(
+  $prefix,
+  $property,
+  $sizes,
+  $spacers,
+  $breakpoints
+) {
+  @each $size in $sizes {
+    // Generar clases sin punto de quiebre
+    .#{$prefix}-#{$size} {
+      #{$property}: map-get($spacers, $size) !important;
+    }
+    .#{$prefix}t-#{$size} {
+      #{$property}-top: map-get($spacers, $size) !important;
+    }
+    .#{$prefix}b-#{$size} {
+      #{$property}-bottom: map-get($spacers, $size) !important;
+    }
+    .#{$prefix}s-#{$size} {
+      #{$property}-left: map-get($spacers, $size) !important;
+    }
+    .#{$prefix}e-#{$size} {
+      #{$property}-right: map-get($spacers, $size) !important;
+    }
+    .#{$prefix}x-#{$size} {
+      #{$property}-left: map-get($spacers, $size) !important;
+      #{$property}-right: map-get($spacers, $size) !important;
+    }
+    .#{$prefix}y-#{$size} {
+      #{$property}-top: map-get($spacers, $size) !important;
+      #{$property}-bottom: map-get($spacers, $size) !important;
+    }
+  }
+}
+
+@mixin generate-spacing-classes-bp(
+  $prefix,
+  $property,
+  $sizes,
+  $spacers,
+  $breakpoints
+) {
+  @each $size in $sizes {
+    @each $breakpoint, $value in $breakpoints {
+      @if $value != 0 {
+        @media (min-width: #{$value}) {
+          .#{$prefix}-#{$breakpoint}-#{$size} {
+            #{$property}: map-get($spacers, $size) !important;
+          }
+          .#{$prefix}t-#{$breakpoint}-#{$size} {
+            #{$property}-top: map-get($spacers, $size) !important;
+          }
+          .#{$prefix}b-#{$breakpoint}-#{$size} {
+            #{$property}-bottom: map-get($spacers, $size) !important;
+          }
+          .#{$prefix}s-#{$breakpoint}-#{$size} {
+            #{$property}-left: map-get($spacers, $size) !important;
+          }
+          .#{$prefix}e-#{$breakpoint}-#{$size} {
+            #{$property}-right: map-get($spacers, $size) !important;
+          }
+          .#{$prefix}x-#{$breakpoint}-#{$size} {
+            #{$property}-left: map-get($spacers, $size) !important;
+            #{$property}-right: map-get($spacers, $size) !important;
+          }
+          .#{$prefix}y-#{$breakpoint}-#{$size} {
+            #{$property}-top: map-get($spacers, $size) !important;
+            #{$property}-bottom: map-get($spacers, $size) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include generate-spacing-classes(
+  "m",
+  "margin",
+  $sizes,
+  $spacers,
+  $breakpoints
+);
+@include generate-spacing-classes(
+  "p",
+  "padding",
+  $sizes,
+  $spacers,
+  $breakpoints
+);
+
+@include generate-spacing-classes-bp(
+  "m",
+  "margin",
+  $sizes,
+  $spacers,
+  $breakpoints
+);
+@include generate-spacing-classes-bp(
+  "p",
+  "padding",
+  $sizes,
+  $spacers,
+  $breakpoints
+);
+
+// ALIGN
+.text-start {
+  text-align: left !important;
+}
+.text-end {
+  text-align: right !important;
+}
+.text-center {
+  text-align: center !important;
+}
+
+@media (min-width: 576px) {
+  .text-sm-start {
+    text-align: left !important;
+  }
+  .text-sm-end {
+    text-align: right !important;
+  }
+  .text-sm-center {
+    text-align: center !important;
+  }
+}
+@media (min-width: 768px) {
+  .text-md-start {
+    text-align: left !important;
+  }
+  .text-md-end {
+    text-align: right !important;
+  }
+  .text-md-center {
+    text-align: center !important;
+  }
+}
+@media (min-width: 992px) {
+  .text-lg-start {
+    text-align: left !important;
+  }
+  .text-lg-end {
+    text-align: right !important;
+  }
+  .text-lg-center {
+    text-align: center !important;
+  }
+}
+@media (min-width: 1200px) {
+  .text-xl-start {
+    text-align: left !important;
+  }
+  .text-xl-end {
+    text-align: right !important;
+  }
+  .text-xl-center {
+    text-align: center !important;
+  }
+}
+@media (min-width: 1400px) {
+  .text-xxl-start {
+    text-align: left !important;
+  }
+  .text-xxl-end {
+    text-align: right !important;
+  }
+  .text-xxl-center {
+    text-align: center !important;
+  }
+}
+
+// DISPLAY
+.d-block {
+  display: block !important;
+}
+.d-flex {
+  display: flex !important;
+}
+.d-none {
+  display: none !important;
+}
+.align-items-start {
+  align-items: flex-start !important;
+}
+
+.align-items-end {
+  align-items: flex-end !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.align-items-baseline {
+  align-items: baseline !important;
+}
+
+.align-items-stretch {
+  align-items: stretch !important;
+}
+.justify-content-start {
+  justify-content: flex-start !important;
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.justify-content-around {
+  justify-content: space-around !important;
+}
+
+.justify-content-evenly {
+  justify-content: space-evenly !important;
+}
+
+@media (min-width: 576px) {
+  .d-sm-block {
+    display: block !important;
+  }
+  .d-sm-flex {
+    display: flex !important;
+  }
+  .d-sm-none {
+    display: none !important;
+  }
+  .align-items-sm-start {
+    align-items: flex-start !important;
+  }  
+  .align-items-sm-end {
+    align-items: flex-end !important;
+  }  
+  .align-items-sm-center {
+    align-items: center !important;
+  }  
+  .align-items-sm-baseline {
+    align-items: baseline !important;
+  }  
+  .align-items-sm-stretch {
+    align-items: stretch !important;
+  }
+  .justify-content-sm-start {
+    justify-content: flex-start !important;
+  }  
+  .justify-content-sm-end {
+    justify-content: flex-end !important;
+  }  
+  .justify-content-sm-center {
+    justify-content: center !important;
+  }  
+  .justify-content-sm-between {
+    justify-content: space-between !important;
+  }  
+  .justify-content-sm-around {
+    justify-content: space-around !important;
+  }  
+  .justify-content-sm-evenly {
+    justify-content: space-evenly !important;
+  }
+}
+@media (min-width: 768px) {
+  .d-md-block {
+    display: block !important;
+  }
+  .d-md-flex {
+    display: flex !important;
+  }
+  .d-md-none {
+    display: none !important;
+  }
+  .align-items-md-start {
+    align-items: flex-start !important;
+  }  
+  .align-items-md-end {
+    align-items: flex-end !important;
+  }  
+  .align-items-md-center {
+    align-items: center !important;
+  }  
+  .align-items-md-baseline {
+    align-items: baseline !important;
+  }  
+  .align-items-md-stretch {
+    align-items: stretch !important;
+  }
+  .justify-content-md-start {
+    justify-content: flex-start !important;
+  }  
+  .justify-content-md-end {
+    justify-content: flex-end !important;
+  }  
+  .justify-content-md-center {
+    justify-content: center !important;
+  }  
+  .justify-content-md-between {
+    justify-content: space-between !important;
+  }  
+  .justify-content-md-around {
+    justify-content: space-around !important;
+  }  
+  .justify-content-md-evenly {
+    justify-content: space-evenly !important;
+  }
+}
+@media (min-width: 992px) {
+  .d-lg-block {
+    display: block !important;
+  }
+  .d-lg-flex {
+    display: flex !important;
+  }
+  .d-lg-none {
+    display: none !important;
+  }
+  .align-items-lg-start {
+    align-items: flex-start !important;
+  }  
+  .align-items-lg-end {
+    align-items: flex-end !important;
+  }  
+  .align-items-lg-center {
+    align-items: center !important;
+  }  
+  .align-items-lg-baseline {
+    align-items: baseline !important;
+  }  
+  .align-items-lg-stretch {
+    align-items: stretch !important;
+  }
+  .justify-content-lg-start {
+    justify-content: flex-start !important;
+  }  
+  .justify-content-lg-end {
+    justify-content: flex-end !important;
+  }  
+  .justify-content-lg-center {
+    justify-content: center !important;
+  }  
+  .justify-content-lg-between {
+    justify-content: space-between !important;
+  }  
+  .justify-content-lg-around {
+    justify-content: space-around !important;
+  }  
+  .justify-content-lg-evenly {
+    justify-content: space-evenly !important;
+  }
+}
+@media (min-width: 1200px) {
+  .d-xl-block {
+    display: block !important;
+  }
+  .d-xl-flex {
+    display: flex !important;
+  }
+  .d-xl-none {
+    display: none !important;
+  }
+  .align-items-xl-start {
+    align-items: flex-start !important;
+  }  
+  .align-items-xl-end {
+    align-items: flex-end !important;
+  }  
+  .align-items-xl-center {
+    align-items: center !important;
+  }  
+  .align-items-xl-baseline {
+    align-items: baseline !important;
+  }  
+  .align-items-xl-stretch {
+    align-items: stretch !important;
+  }
+  .justify-content-xl-start {
+    justify-content: flex-start !important;
+  }  
+  .justify-content-xl-end {
+    justify-content: flex-end !important;
+  }  
+  .justify-content-xl-center {
+    justify-content: center !important;
+  }  
+  .justify-content-xl-between {
+    justify-content: space-between !important;
+  }  
+  .justify-content-xl-around {
+    justify-content: space-around !important;
+  }  
+  .justify-content-xl-evenly {
+    justify-content: space-evenly !important;
+  }
+}
+@media (min-width: 1400px) {
+  .d-xxl-block {
+    display: block !important;
+  }
+  .d-xxl-flex {
+    display: flex !important;
+  }
+  .d-xxl-none {
+    display: none !important;
+  }
+  .align-items-xxl-start {
+    align-items: flex-start !important;
+  }  
+  .align-items-xxl-end {
+    align-items: flex-end !important;
+  }  
+  .align-items-xxl-center {
+    align-items: center !important;
+  }  
+  .align-items-xxl-baseline {
+    align-items: baseline !important;
+  }  
+  .align-items-xxl-stretch {
+    align-items: stretch !important;
+  }
+  .justify-content-xxl-start {
+    justify-content: flex-start !important;
+  }  
+  .justify-content-xxl-end {
+    justify-content: flex-end !important;
+  }  
+  .justify-content-xxl-center {
+    justify-content: center !important;
+  }  
+  .justify-content-xxl-between {
+    justify-content: space-between !important;
+  }  
+  .justify-content-xxl-around {
+    justify-content: space-around !important;
+  }  
+  .justify-content-xxl-evenly {
+    justify-content: space-evenly !important;
+  }
+}

@@ -1,0 +1,123 @@
+// $active-menu: #b19261;
+$active-menu: $hotel-cta;
+
+#masthead {
+  // Al hacer Scroll
+  &.affix {
+    @media (min-width: 768px) {
+      // --thim_width_logo: 125px;
+    }
+  }
+  // .menu-item-turismo {
+  //   .icon-toggle {
+  //     @media (min-width: 768px) {
+  //       margin-left: 4px;
+  //     }
+  //   }
+  // }
+  // Paginas activas no podran ser nuevamente clickeada
+  [aria-current="page"] {
+    pointer-events: none;
+    // color: var(--thim_body_primary_color);
+    color: $active-menu;
+
+    & > span {
+      // color: var(--thim_body_primary_color);
+      color: $active-menu;
+    }
+    + .icon-toggle {
+      color: $active-menu;
+    }
+  }
+  // Change Language
+  .textwidget {
+    .language {
+      &.notranslate {
+        border-bottom: 0;
+        & .gt-current-lang {
+          // color: var(--thim_body_primary_color);
+          color: $active-menu;
+        }
+      }
+    }
+  }
+
+  .menu-item {
+    &.notranslate {
+      .icon-toggle {
+        @media (min-width: 768px) {
+          position: relative;
+          top: 1px;
+          padding-left: 18px;
+          cursor: pointer;
+        }
+      }
+      @media (min-width: 992px) {
+        display: none;
+      }
+    }
+  }
+  .sub-menu {
+    a {
+      &:hover {
+        span {
+          color: initial;
+        }
+      }
+    }
+  }
+
+  // .width-logo {
+  //   > a {
+  //   }
+  // }
+
+  .menu-inicio {
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .tm-table {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding-left: 15px;
+    @media (min-width: 768px) {
+      padding-left: 0;
+      display: table;
+    }
+  }
+  // .mobile-logo {
+  //   margin-left: 15px;
+  // }
+
+  // .menu-right {
+  // }
+  .language.notranslate {
+    top: -2.5px;
+  }
+  .phone-swapper {
+    transition: all 0.25s;
+    opacity: 0.75;
+    &:hover {
+      text-decoration: underline;
+      opacity: 1;
+    }
+  }
+  .call {
+    &__icon {
+      i {
+        font-size: 16px;
+        transform: rotate(90deg);
+        margin-right: 5px;
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    --thim_width_logo: 115px;
+  }
+}

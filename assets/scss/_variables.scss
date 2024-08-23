@@ -1,0 +1,25 @@
+$hotel-marron: #2f211c; // títulos
+$hotel-verde: #bdcd66; // (reeemplazar al naranja)
+$hotel-cta: #fe9920; // CTA: botones
+// $asd: #ffb606;
+// old-color: #b19261;
+.text-hotel-marron {
+  color: $hotel-marron !important;
+}
+.bg-hotel-marron {
+  background-color: $hotel-marron !important;
+}
+
+.text-hotel-verde {
+  color: $hotel-verde !important;
+}
+.bg-hotel-verde {
+  background-color: $hotel-verde !important;
+}
+
+.text-hotel-cta {
+  color: $hotel-cta !important;
+}
+.bg-hotel-cta {
+  background-color: $hotel-cta !important;
+}

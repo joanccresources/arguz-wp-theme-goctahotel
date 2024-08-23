@@ -1,0 +1,71 @@
+// Varibles
+@import "variables";
+// Global
+@import "global";
+// Header
+@import "header";
+
+// Footer
+@import "footer";
+
+//BEGIN ****************************************************************
+// PAGE ROOMS habitaciones
+.rooms {
+  &.hb-catalog-column-3 {
+    .thim-room-grid {
+      .hb_room {
+        .media {
+          img {
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Habitaciones Detalle
+// single room - Compartir - icono de google
+.hb-share {
+  .googleplus {
+    display: none !important;
+  }
+}
+// single room - Pricing Plans
+.hb_single_room_details {
+  [href*="hb_room_pricing_plans"],
+  [href*="hb_room_additinal"] {
+    display: none !important;
+  }
+  [href*="hb_room_description"] {
+    pointer-events: none;
+  }
+}
+// single room - aside
+.theiaStickySidebar {
+  #hb_room_load_booking_form {
+    display: none !important;
+  }
+  #mini-cart-room-3 {
+    display: none !important;
+  }
+}
+
+//
+[name="hb-search-form"] {
+  .hb-submit {
+    button {
+      &:nth-last-of-type(1) {
+        display: none !important;
+      }
+    }
+  }
+}
+//END ****************************************************************
+
+// Pages
+@import "pages/index";
+
+// Utilities Bootstrap
+@import "./utilities";
