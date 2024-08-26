@@ -44,6 +44,7 @@ function openCity(evt, cityName) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOMContentLoaded - destinos turisticos");
   showAndHideNavigation();
 
   const cityName = "destino-1";
@@ -52,3 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
   openCity(null, cityName);
   $firstTab.className += " active";
 });
+
+// console.log("destinos turisticos");
+// showAndHideNavigation();
+
+// const cityName = "destino-1";
+// const $firstTab = document.getElementById(`tab-${cityName}`);
+// // if (!$firstTab) return;
+// if ($firstTab) {
+//   openCity(null, cityName);
+//   $firstTab.className += " active";
+// }

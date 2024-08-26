@@ -1,5 +1,3 @@
-console.log("Hola mundo");
-
 // paginador
 const translatePaginationTexts = () => {
   const $next = document.querySelector(".next.page-numbers");
@@ -37,24 +35,12 @@ const translateHeroText = () => {
   return;
 };
 
-// Reservacion Aside
-const translateAsideText = () => {
-  const $title = document.querySelector(
-    ".widget_search-room .wrapper-line-heading .heading__primary"
-  );
-  if ($title) {
-    $title.textContent = "Tu reservación";
-  }
-};
-
 const changeFormReservation = () => {
   const $form = document.querySelector(`[name="hb-search-form"]`),
     parentInputs = $form?.querySelector(`.hb-form-table`),
     parentSubmit = $form?.querySelector(".hb-submit");
 
-  const $parentCF7 = document.querySelector("#your-reservation-form-cf7");
-  // const $formCF7 = $parentCF7?.parentNode;
-  const $formCF7 = document.querySelector(".wpcf7-form.init");
+  const $formCF7 = document.querySelector("form.wpcf7-form");
 
   const html = `
   <li class="hb-form-field">
@@ -86,19 +72,12 @@ const changeFormReservation = () => {
   $btnSend.addEventListener("click", (event) => {
     const formDataReservation = new FormData($form);
     console.log("$formCF7", $formCF7);
+    // Recorremos el form de la pagina y le asignamos al contact form7
     formDataReservation.forEach((value, key) => {
       const input = $formCF7.querySelector(`[name="${key}"]`);
-      if (input) {
-        input.value = value;
-      }
-    });
-    console.log("before submit");
-    const formDataCF7 = new FormData($formCF7);
-    formDataCF7.forEach((value, key) => {
-      console.log(key, value);
+      if (input) input.value = value;
     });
     $formCF7.submit();
-    console.log("after submit");
     // -----------------------
     //  full_name: Joan Cochachi
     //  email: pedro@gmail.com
@@ -119,13 +98,12 @@ const changeFormReservation = () => {
 document.addEventListener("DOMContentLoaded", () => {
   translatePaginationTexts();
   translateHeroText();
-  translateAsideText();
 
   if (
     Array.from(location.pathname).filter((item) => item === "/").length >= 3 &&
     location.pathname.includes("/rooms/")
   ) {
-    changeFormReservation();
+    // changeFormReservation();
   }
 });
 
@@ -135,3 +113,27 @@ addEventListener("DOMContentLoaded", () => {
     btn.setAttribute("target", "_blank");
   });
 });
+
+const loadScriptForPathname = () => {
+  const loadScript = () => {};
+
+  // Obtener el pathname de la URL actual
+  const currentPath = window.location.pathname;
+  // Verificar si el pathname comienza con '/rooms/' y tiene algo más después de '/rooms/'
+  if (
+    currentPath.startsWith("/rooms/") &&
+    /^\/rooms\/[^\/]+\/$/.test(currentPath)
+  ) {
+    // Crear un nuevo elemento <script>
+    const script = document.createElement("script");
+    script.type = "module";
+    script.src =
+      "/wp-content/themes/sailing-child-goctahotel/assets/js/habitaciones-detalle.js"; // Ajusta la ruta si es necesario
+    // Agregar el script al DOM, justo antes de cerrar el <body>
+    document.body.appendChild(script);
+  }
+};
+
+// Usar la función para cargar los scripts cuando el pathname coincida
+window.addEventListener("DOMContentLoaded", loadScriptForPathname);
+// loadScriptForPathname();

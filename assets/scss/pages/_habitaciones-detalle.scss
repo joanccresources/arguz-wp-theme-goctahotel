@@ -126,7 +126,7 @@ body.single-hb_room {
   }
 
   .widget-content {
-    background-image: url("https://goctaamazonashotel.com/wp-content/uploads/2024/08/fondo-reserva-2.png") !important;
+    // background-image: url("https://goctaamazonashotel.com/wp-content/uploads/2024/08/fondo-reserva-2.png") !important;
   }
 
   .hb_single_room_tabs {
@@ -139,6 +139,18 @@ body.single-hb_room {
     // @media (min-width: 768px) {
     //   display: inline-block;
     // }
+  }
+  form[name="hb-search-form"] {
+    input::placeholder {
+      opacity: 0.5;
+    }
+    .hb-submit {
+      button {
+        &:nth-last-of-type(1) {
+          display: none !important;
+        }
+      }
+    }
   }
 }
 
