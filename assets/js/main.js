@@ -132,8 +132,21 @@ const loadScriptForPathname = () => {
     // Agregar el script al DOM, justo antes de cerrar el <body>
     document.body.appendChild(script);
   }
+  if (currentPath === "/home/" || currentPath === "/") {
+    const script = document.createElement("script");
+    script.type = "module";
+    script.src =
+      "/wp-content/themes/sailing-child-goctahotel/assets/js/home.js";
+    document.body.appendChild(script);
+  }
+  if (currentPath === "/reservacion/") {
+    const script = document.createElement("script");
+    script.type = "module";
+    script.src =
+      "/wp-content/themes/sailing-child-goctahotel/assets/js/reservacion.js";
+    document.body.appendChild(script);
+  }
 };
 
 // Usar la función para cargar los scripts cuando el pathname coincida
 window.addEventListener("DOMContentLoaded", loadScriptForPathname);
-// loadScriptForPathname();

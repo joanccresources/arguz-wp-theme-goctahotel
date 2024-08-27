@@ -82,10 +82,9 @@ if (get_theme_mod('thim_footer_style') == true) {
 <?php } ?>
 <div class="covers-parallax"></div>
 <?php wp_footer(); ?>
-<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/main.js" type="module"></script>
-
+<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/main.js?v=<?= time() ?>" type="module"></script>
 <?php if (is_page("destinos-turisticos")): ?>
-	<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/destinos-turisticos.js"></script>
+	<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/destinos-turisticos.js?v=<?= time() ?>"></script>
 <?php endif; ?>
 </body>
 

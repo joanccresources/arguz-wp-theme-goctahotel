@@ -89,6 +89,18 @@ const changeFormReservation = ($form) => {
       const input = $formCF7.querySelector(`[name="${key}"]`);
       if (input) input.value = value;
     });
+
+    const yourName = $formCF7.querySelector(`[name="your-name"]`);
+    const yourSubject = $formCF7.querySelector(`[name="your-subject"]`);
+    const $title = document.querySelector(
+      ".summary.entry-summary > .title h4 a"
+    );
+
+    if (yourName)
+      yourName.value = $form.querySelector(`[name="full_name"]`).value;
+    if (yourSubject)
+      yourSubject.value = `Reservación - ${$title?.textContent || ""}`;
+
     $formCF7.submit();
     // -----------------------
     //  full_name: Joan Cochachi

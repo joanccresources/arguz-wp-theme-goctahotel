@@ -1,0 +1,55 @@
+#reservacion-disponibilidad-form {
+  .hotel-booking-search {
+    @media (max-width: 767px) {
+      padding-bottom: 0;
+    }
+  }
+  [name="hb-search-form"] {
+    padding-inline: 0px;
+  }
+  .hb-form-table {
+    width: 100%;
+    float: none;
+    display: flex;
+    flex-wrap: wrap;
+    .hb-form-field:nth-last-of-type(1) {
+      margin-bottom: 0;
+    }
+  }
+  .row-add-form {
+    [class*="col-sm-"] {
+      margin-top: 20px;
+      input,
+      textarea {
+        min-height: 50px;
+        &::placeholder {
+          opacity: 0.5;
+        }
+      }
+      &:nth-of-type(odd) {
+        @media (min-width: 768px) {
+          padding-right: 10px;
+        }
+      }
+      &:nth-of-type(even) {
+        @media (min-width: 768px) {
+          padding-left: 10px;
+        }
+      }
+    }
+    @media (min-width: 768px) {
+      padding-inline: 10px;
+    }
+  }
+  .hb-submit {
+    display: none !important;
+  }
+  .alert-form {
+    margin-bottom: -5px;
+    margin-top: 20px;
+    font-size: 14px;
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
