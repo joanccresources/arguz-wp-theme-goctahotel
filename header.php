@@ -48,9 +48,9 @@
 
   wp_head();
   ?>
-  <link id="main-style-css" rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/main.css">
+  <link id="main-style-css" rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/main.css?v=<?= time() ?>">
   <?php if (is_page("destinos-turisticos")) : ?>
-    <link id="destinos-turisticos-style-css" rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/destinos-turisticos.css">
+    <link id="destinos-turisticos-style-css" rel="stylesheet" href="<?= get_stylesheet_directory_uri() ?>/assets/css/destinos-turisticos.css?v=<?= time() ?>">
   <?php endif; ?>
 </head>
 
