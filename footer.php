@@ -82,9 +82,37 @@ if (get_theme_mod('thim_footer_style') == true) {
 <?php } ?>
 <div class="covers-parallax"></div>
 <?php wp_footer(); ?>
+<!-- Load Javascript Files -->
+<?php $page = get_queried_object(); ?>
+<?php $pathname = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); ?>
 <script src="<?= get_stylesheet_directory_uri() ?>/assets/js/main.js?v=<?= time() ?>" type="module"></script>
+<!--  -->
+<?php if (is_page("home")): ?>
+	<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/home.js?v=<?= time() ?>"></script>
+<?php endif; ?>
+<!--  -->
+<?php if (is_page("reservacion")): ?>
+	<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/reservacion.js?v=<?= time() ?>"></script>
+<?php endif; ?>
+<!--  -->
 <?php if (is_page("destinos-turisticos")): ?>
 	<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/destinos-turisticos.js?v=<?= time() ?>"></script>
+<?php endif; ?>
+<!-- Habitaciones -->
+<?php if ($page->name === 'hb_room'): ?>
+	<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/habitaciones.js?v=<?= time() ?>"></script>
+<?php endif; ?>
+<?php
+/*
+echo "<pre>";
+print_r($page);
+echo "</pre>";
+*/
+?>
+
+<!-- Detalle de habitaciones -->
+<?php if (preg_match('#^/rooms/[a-z0-9\-]+/$#', $pathname)): ?>
+	<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/habitaciones-detalle.js?v=<?= time() ?>"></script>
 <?php endif; ?>
 </body>
 

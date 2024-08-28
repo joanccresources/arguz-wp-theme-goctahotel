@@ -38,6 +38,11 @@ body.single-hb_room {
   }
 
   .hb_room_gallery {
+    &#slider {
+      // @media (max-width: 767px) {
+      margin-bottom: 15px !important;
+      // }
+    }
     .slides {
       img {
         // @media (min-width: 1400px) {

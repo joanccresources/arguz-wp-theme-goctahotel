@@ -1,4 +1,12 @@
-console.log("Habitaciones detalle");
+console.log("habitaciones-detalle");
+
+const resizeCarouselImages = () => {
+  const $imgs = document.querySelectorAll("#slider .slides img");
+  Array.from($imgs).forEach(($img) => {
+    const src = $img.getAttribute("src").split("-1000x1000.png").join("");
+    $img.setAttribute("src", `${src}.png`);
+  });
+};
 
 const insertAlert = () => {
   if (location.hash !== "#wpcf7-f10081-p10135-o1") return;
@@ -100,26 +108,15 @@ const changeFormReservation = ($form) => {
       yourName.value = $form.querySelector(`[name="full_name"]`).value;
     if (yourSubject)
       yourSubject.value = `Reservación - ${$title?.textContent || ""}`;
-
     $formCF7.submit();
-    // -----------------------
-    //  full_name: Joan Cochachi
-    //  email: pedro@gmail.com
-    //  phone: 90055665
-    //  check_in_date: August 08, 2024
-    //  check_out_date: August 16, 2024
-    //  adults_capacity: 1
-    //  max_child: 0
-    //  nonce: a5d17ab6e6
-    //  _wp_http_referer: /rooms/double-room-5/
-    //  hotel-booking: results
-    //  widget-search: 1
-    //  action: hotel_booking_parse_search_params
-    //  paged: 1
   });
 };
 
 const init = () => {
+  resizeCarouselImages();
+};
+
+const initDOMReady = () => {
   const $form = document.querySelector(`[name="hb-search-form"]`);
   insertAlert();
   changeFormReservation($form);
@@ -127,3 +124,6 @@ const init = () => {
 };
 
 init();
+document.addEventListener("DOMContentLoaded", () => {
+  initDOMReady();
+});
