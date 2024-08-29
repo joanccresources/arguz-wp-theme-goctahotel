@@ -1,0 +1,53 @@
+#servicios-incluidos {
+  .icon-box-link {
+    &:hover {
+      color: initial;
+    }
+  }
+}
+
+#servicios-estancia {
+  .sc-heading {
+    padding-top: 0;
+  }
+}
+
+#servicios-espacios {
+  .article-title-wrapper {
+    padding-block: 25px;
+  }
+  .article-txt {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  .category-espacios {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .thim-column-posts {
+    .post-item {
+      &:nth-of-type(even) {
+        .article-title-wrapper {
+          @media (min-width: 768px) {
+            order: 2;
+          }
+        }
+        .article-image {
+          @media (min-width: 768px) {
+            order: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+#servicios-reserva {
+  .heading__primary {
+    transition: all 0.25s;
+    cursor: pointer;
+    &:hover {
+      color: #fe9920;
+    }
+  }
+}

@@ -25,3 +25,71 @@
     cursor: pointer;
   }
 }
+
+#home-turismo {
+  .elementor-post {
+    &__title {
+      margin-bottom: 4px;
+    }
+    &__read-more {
+      color: $hotel-cta;
+    }
+  }
+  .button-turismo {
+    .thim-ekits-button {
+      text-align: center;
+    }
+  }
+}
+
+#home-galeria {
+  .wrapper-filter-controls {
+    display: none;
+  }
+  .wrapper-gallery-filter {
+    display: flex !important;
+    height: auto !important;
+    flex-direction: row-reverse;
+  }
+  .item-photo {
+    flex: 1 0 0% !important;
+    position: static !important;
+    padding-inline: 2.5px;
+    display: none;
+    .inner {
+      margin-bottom: 0;
+      .fancybox {
+        border-radius: 10px;
+        overflow: hidden;
+        display: block;
+      }
+      img {
+        border-radius: 10px;
+        height: 270px;
+        object-fit: cover;
+      }
+    }
+    &:nth-last-of-type(-n + 4) {
+      display: block !important;
+    }
+  }
+
+  .button-galeria {
+    .thim-ekits-button {
+      text-align: center;
+    }
+  }
+}
+
+#home-ambientes {
+  .slick-slide {
+    .thumb {
+      img {
+        width: 100%;
+        height: 380px;
+        object-fit: cover;
+        object-position: top center;
+      }
+    }
+  }
+}

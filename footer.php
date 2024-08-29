@@ -26,7 +26,13 @@ if (get_theme_mod('thim_footer_style') == true) {
 } else {
 	$style = '';
 } ?>
-
+<!-- BEGIN - Agregamos el iframe -->
+<iframe loading="lazy"
+	src="https://maps.google.com/maps?q=gocta%20amazonas%20hotel%20sac&#038;t=m&#038;z=13&#038;output=embed&#038;iwloc=near"
+	title="gocta amazonas hotel sac"
+	aria-label="gocta amazonas hotel sac"
+	id="iframe-map-hotel"></iframe>
+<!-- END - Agregamos el iframe -->
 <footer style="<?php echo $style; ?>" id="colophon" class="site-footer <?php echo $class2; ?>">
 	<?php if (get_theme_mod('thim_footer_style') == false) { ?>
 		<div class="<?php echo $class; ?>">
@@ -93,6 +99,10 @@ if (get_theme_mod('thim_footer_style') == true) {
 <!--  -->
 <?php if (is_page("reservacion")): ?>
 	<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/reservacion.js?v=<?= time() ?>"></script>
+<?php endif; ?>
+<!--  -->
+<?php if (is_page("servicios")): ?>
+	<script src="<?= get_stylesheet_directory_uri() ?>/assets/js/servicios.js?v=<?= time() ?>"></script>
 <?php endif; ?>
 <!--  -->
 <?php if (is_page("destinos-turisticos")): ?>

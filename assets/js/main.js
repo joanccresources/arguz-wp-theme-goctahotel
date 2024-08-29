@@ -35,9 +35,22 @@ const translateHeroText = () => {
   return;
 };
 
+// document.querySelectorAll(".footer-copyright-last")
+const addFooterCopyright = () => {
+  const $copyright = document.querySelector(".footer-copyright-last");
+  if (!$copyright) return;
+  $copyright.innerHTML = `
+    <div class="d-flex justify-content-between">
+      <p class="mb-0">Gocta Amazonas Hotel (c) ${new Date().getFullYear()}</p>
+      <p class="mb-0">Desarrollado por arguz</p>
+    </div>
+  `;
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   translatePaginationTexts();
   translateHeroText();
+  addFooterCopyright();
 });
 
 addEventListener("DOMContentLoaded", () => {

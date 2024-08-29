@@ -64,3 +64,4 @@ document.addEventListener("DOMContentLoaded", () => {
 //   openCity(null, cityName);
 //   $firstTab.className += " active";
 // }
+document.getElementById("iframe-map-hotel").classList.add("d-none");

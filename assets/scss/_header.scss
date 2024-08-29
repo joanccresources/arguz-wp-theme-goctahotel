@@ -8,6 +8,35 @@ $active-menu: $hotel-cta;
       // --thim_width_logo: 125px;
     }
   }
+
+  .table-cell {
+    &.table-right {
+      // padding-left: 2.5%;
+      padding-left: 15px;
+      @media (min-width: 1200px) {
+        padding-left: 40px;
+      }
+      @media (min-width: 1400px) {
+        padding-left: 7.5%;
+      }
+    }
+  }
+
+  .width-logo {
+    $width-logo-lg: 115px;
+    $width-logo-xl: 135px;
+    width: $width-logo-lg !important;
+    .no-mobile-logo {
+      width: $width-logo-lg !important;
+      @media (min-width: 1200px) {
+        width: $width-logo-xl !important;
+      }
+    }
+    @media (min-width: 1200px) {
+      width: $width-logo-xl !important;
+    }
+  }
+
   // .menu-item-turismo {
   //   .icon-toggle {
   //     @media (min-width: 768px) {
@@ -41,7 +70,11 @@ $active-menu: $hotel-cta;
       }
     }
   }
-
+  .menu-main-menu {
+    @media (min-width: 992px) {
+      text-align: left;
+    }
+  }
   .menu-item {
     &.notranslate {
       .icon-toggle {
@@ -54,6 +87,23 @@ $active-menu: $hotel-cta;
       }
       @media (min-width: 992px) {
         display: none;
+      }
+    }
+    a {
+      // margin-inline: 15px;
+      margin-inline: 10px !important;
+      > span {
+        text-transform: none;
+        font-size: 14px;
+        @media (min-width: 1400px) {
+          font-size: 16px;
+        }
+      }
+      @media (min-width: 1400px) {
+        margin-inline: 15px;
+      }
+      @media (min-width: 1400px) {
+        margin-inline: 20px;
       }
     }
   }
@@ -97,6 +147,12 @@ $active-menu: $hotel-cta;
   // }
   .language.notranslate {
     top: -2.5px;
+    .dropdown-menu {
+      left: -59px;
+      @media (min-width: 1400px) {
+        left: -10px;
+      }
+    }
   }
   .phone-swapper {
     transition: all 0.25s;
@@ -105,14 +161,49 @@ $active-menu: $hotel-cta;
       text-decoration: underline;
       opacity: 1;
     }
+
+    @media (min-width: 992px) {
+      display: block !important;
+    }
   }
   .call {
     &__icon {
       i {
-        font-size: 16px;
-        transform: rotate(90deg);
-        margin-right: 5px;
+        // transform: rotate(90deg);
+        // margin-right: 5px;
+        // font-size: 17px;
+        font-size: 18px;
+        color: #26d366;
+        position: relative;
+        top: 1px;
       }
+    }
+    &__number {
+      font-size: 14px;
+      display: none;
+      @media (min-width: 1200px) {
+        display: block;
+      }
+      @media (min-width: 1400px) {
+        font-size: 16px;
+      }
+    }
+  }
+  #text-3 {
+    padding-right: 0;
+    @media (min-width: 1400px) {
+      padding-right: 15px;
+    }
+  }
+  #text-4 {
+    // padding-right: 0;
+    // @media (min-width: 1400px) {
+    //   padding-right: 15px;
+    // }
+  }
+  .thim-select-language {
+    display: block !important;
+    @media (min-width: 1200px) {
     }
   }
 }

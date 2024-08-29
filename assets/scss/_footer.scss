@@ -9,4 +9,43 @@ footer#colophon {
       }
     }
   }
+  .social_link {
+    .hasTooltip {
+      &:hover {
+        color: rgb(138, 138, 138) !important;
+      }
+    }
+  }
+  #menu-main-menu-1 {
+    flex-direction: column;
+    .menu-item {
+      &.active {
+        a {
+          color: $hotel-cta;
+        }
+      }
+      a {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+  #column-menu {
+    .elementor-widget-wrap {
+      // padding-top: 30px;
+      padding-top: 44px;
+    }
+  }
+
+  .footer-copyright-last {
+    div {
+      @media (max-width: 767px) {
+        flex-direction: column;
+        row-gap: 8px;
+      }
+    }
+  }
 }
+// elementor-widget-wrap
+// padding-top: 30px;
