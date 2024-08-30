@@ -30,11 +30,43 @@ footer#colophon {
         }
       }
     }
+    @media (max-width: 1024px) {
+      padding-top: 0;
+    }
+    @media (max-width: 767px) {
+      padding-bottom: 0;
+    }
+  }
+  #thim-ekits-menu-main-menu {
+    @media (max-width: 1024px) {
+      position: static;
+      transform: none;
+      background: initial;
+      width: initial;
+      height: initial;
+      overflow: auto;
+      .menu-item {
+        a {
+          padding: 0px 15px 0px 0;
+        }
+      }
+      .thim-ekits-menu__mobile__close {
+        display: none;
+      }
+    }
   }
   #column-menu {
     .elementor-widget-wrap {
       // padding-top: 30px;
       padding-top: 44px;
+      @media (max-width: 767px) {
+        padding-top: 20px;
+      }
+    }
+    @media (max-width: 1024px) {
+      .thim-ekits-menu__mobile {
+        display: none;
+      }
     }
   }
 

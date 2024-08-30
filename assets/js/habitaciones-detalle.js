@@ -9,7 +9,9 @@ const resizeCarouselImages = () => {
 };
 
 const insertAlert = () => {
-  if (location.hash !== "#wpcf7-f10081-p10135-o1") return;
+  // if (location.hash !== "#wpcf7-f10081-p10135-o1") return;
+  if (!location.hash.includes("#wpcf7-") || location.hash === "") return;
+
   const $siteContent = document.querySelector(".container.site-content");
   if (!$siteContent) return;
   const $alertHtml = `
@@ -127,3 +129,5 @@ init();
 document.addEventListener("DOMContentLoaded", () => {
   initDOMReady();
 });
+
+document.querySelector(".footer-galeria").style.backgroundColor = "#F7F7F7";

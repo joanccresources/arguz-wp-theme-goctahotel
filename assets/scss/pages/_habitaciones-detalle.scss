@@ -1,4 +1,10 @@
 body.single-hb_room {
+  #main {
+    @media (max-width: 767px) {
+      padding-bottom: 15px;
+    }
+  }
+
   // color: initial;
   .price {
     color: $hotel-verde;
@@ -34,6 +40,20 @@ body.single-hb_room {
     .background {
       // background-color: $hotel-verde;
       background-color: rgba($hotel-verde, 0.85);
+    }
+
+    .hb_button {
+      &.hb_primary {
+        @media (max-width: 767px) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  #mini-cart-room-3 {
+    @media (max-width: 767px) {
+      display: none;
     }
   }
 
@@ -118,11 +138,16 @@ body.single-hb_room {
       width: 50%;
       img {
         margin-bottom: 2.5px;
+        max-width: 70px;
+        margin: auto;
       }
       p {
         margin-bottom: 0;
         line-height: 1.35;
         font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
       }
     }
     &__body {

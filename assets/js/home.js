@@ -15,12 +15,33 @@ const changeFormReservation = () => {
       const adults_capacity = $form.querySelector(`[name="adults_capacity"]`);
       const max_child = $form.querySelector(`[name="max_child"]`);
 
-      location.href = `/reservacion/?check_in_date=${encodeURIComponent(check_in_date.value)}&check_out_date=${encodeURIComponent(check_out_date.value)}&adults_capacity=${encodeURIComponent(adults_capacity.value)}&max_child=${encodeURIComponent(max_child.value)}`;      
+      location.href = `/reservacion/?check_in_date=${encodeURIComponent(
+        check_in_date.value
+      )}&check_out_date=${encodeURIComponent(
+        check_out_date.value
+      )}&adults_capacity=${encodeURIComponent(
+        adults_capacity.value
+      )}&max_child=${encodeURIComponent(max_child.value)}`;
     });
+};
+
+const changeUrlTurismo = () => {
+  const $links = document.querySelectorAll("#home-turismo .elementor-post a");
+
+  Array.from($links).forEach(($link) => {
+    let newUrl = `${location.origin}/destinos-turisticos/#`;
+    const pathname = $link
+      .getAttribute("href")
+      .split("/")
+      .filter(Boolean)
+      .pop();
+    $link.setAttribute("href", newUrl + pathname);
+  });
 };
 
 const init = () => {
   changeFormReservation();
+  changeUrlTurismo();
 };
 
 init();

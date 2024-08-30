@@ -73,3 +73,11 @@
   bottom: 3px;
   color: var(--thim_body_primary_color);
 }
+
+.row-main-destinos {
+  @media (max-width: 767px) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+}

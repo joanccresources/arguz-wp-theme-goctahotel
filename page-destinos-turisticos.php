@@ -30,30 +30,9 @@ $maps = [];
     <?php if ($destinos->have_posts()) : ?>
       <section class="site-content pb-0">
         <div class="container container-content">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="tab">
-                <div id="tab-menu" class="d-flex align-items-center justify-content-between d-md-block">
-                  <p class="turismo__aside-title text-start text-md-center ps-4 ps-md-0">Turismo</p>
-                  <i class="fas fa-chevron-down d-md-none pt-3 pe-4"></i>
-                  <i class="fas fa-chevron-up d-none d-md-none pt-3 pe-4"></i>
-                </div>
-                <div class="tab-child d-none d-md-flex">
-                  <?php $i = 0; ?>
-                  <?php while ($destinos->have_posts()) : ?>
-                    <?php $destinos->the_post(); ?>
-                    <?php $i++; ?>
-                    <button class="tablinks" id="tab-destino-<?= $i ?>" onclick="openCity(event, 'destino-<?= $i ?>')">
-                      <div>
-                        <span><i class="fas fa-map-marker-alt"></i></span>
-                        <span><?= get_the_title(); ?></span>
-                      </div>
-                    </button>
-                  <?php endwhile; ?>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-8 mt-4 mt-md-0">
+          <div class="row row-main-destinos">
+
+            <div class="col-md-8 mt-4 mt-md-0 col-2">
               <?php $i = 0; ?>
               <?php while ($destinos->have_posts()) : ?>
                 <?php $destinos->the_post(); ?>
@@ -82,6 +61,33 @@ $maps = [];
                   </div>
                 </div>
               <?php endwhile; ?>
+            </div>
+            <div class="col-md-4 col-1">
+              <div class="tab">
+                <div id="tab-menu" class="d-flex align-items-center justify-content-between d-md-block">
+                  <p class="turismo__aside-title text-start text-md-center ps-4 ps-md-0">Turismo</p>
+                  <i class="fas fa-chevron-down d-md-none pt-3 pe-4"></i>
+                  <i class="fas fa-chevron-up d-none d-md-none pt-3 pe-4"></i>
+                </div>
+                <div class="tab-child d-none d-md-flex">
+                  <?php $i = 0; ?>
+                  <?php while ($destinos->have_posts()) : ?>
+                    <?php
+                    // echo "<pre>";
+                    // print_r($destinos);
+                    // echo "</pre>";
+                    ?>
+                    <?php $destinos->the_post(); ?>
+                    <?php $i++; ?>
+                    <button class="tablinks" id="tab-destino-<?= $i ?>" onclick="openCity(event, 'destino-<?= $i ?>')" data-slug="#<?= basename(get_the_permalink()) ?>">
+                      <div>
+                        <span><i class="fas fa-map-marker-alt"></i></span>
+                        <span><?= get_the_title(); ?></span>
+                      </div>
+                    </button>
+                  <?php endwhile; ?>
+                </div>
+              </div>
             </div>
           </div>
         </div>

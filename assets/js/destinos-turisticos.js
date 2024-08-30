@@ -43,6 +43,13 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 
+const simulateClick = () => {
+  if (location.hash) {
+    const tabLink = document.querySelector(`[data-slug="${location.hash}"]`);
+    tabLink.click();
+  }
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOMContentLoaded - destinos turisticos");
   showAndHideNavigation();
@@ -52,6 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!$firstTab) return;
   openCity(null, cityName);
   $firstTab.className += " active";
+  console.log("1");
+  simulateClick();
 });
 
 // console.log("destinos turisticos");
@@ -64,4 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //   openCity(null, cityName);
 //   $firstTab.className += " active";
 // }
+// ocultar el mapa que se muestra en todos los paginas
 document.getElementById("iframe-map-hotel").classList.add("d-none");
+document.querySelector(".footer-galeria").style.backgroundColor = "#F7F7F7";

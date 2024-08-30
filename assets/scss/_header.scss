@@ -28,6 +28,9 @@ $active-menu: $hotel-cta;
     width: $width-logo-lg !important;
     .no-mobile-logo {
       width: $width-logo-lg !important;
+      img {
+        margin-bottom: 0;
+      }
       @media (min-width: 1200px) {
         width: $width-logo-xl !important;
       }
@@ -104,6 +107,11 @@ $active-menu: $hotel-cta;
       }
       @media (min-width: 1400px) {
         margin-inline: 20px;
+      }
+      &::before {
+        @media (min-width: 992px) {
+          bottom: -15px !important;
+        }
       }
     }
   }
