@@ -42,7 +42,7 @@ const addFooterCopyright = () => {
   $copyright.innerHTML = `
     <div class="d-flex justify-content-between">
       <p class="mb-0">Gocta Amazonas Hotel (c) ${new Date().getFullYear()}</p>
-      <p class="mb-0">Desarrollado por arguz</p>
+      <p class="mb-0">Desarrollado por <a class="text-white" href="https://arguz.pe/" target="_blank">arguz</a></p>
     </div>
   `;
 };

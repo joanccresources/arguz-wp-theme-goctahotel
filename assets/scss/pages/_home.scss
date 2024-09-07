@@ -34,6 +34,12 @@
     &__read-more {
       color: $hotel-cta;
     }
+    &__excerpt {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
   }
   .button-turismo {
     .thim-ekits-button {
