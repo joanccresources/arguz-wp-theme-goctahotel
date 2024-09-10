@@ -28,201 +28,109 @@ if (get_theme_mod('thim_footer_style') == true) {
 } ?>
 
 <!-- BEGIN - GALERIA -->
-<div class="footer-galeria">
-	<div class="container">
-		<section
-			class="elementor-section elementor-top-section elementor-element elementor-element-45a6b9a elementor-section-full_width elementor-section-height-default elementor-section-height-default"
-			data-id="45a6b9a"
-			data-element_type="section"
-			id="home-galeria">
-			<div class="elementor-container elementor-column-gap-no">
-				<div
-					class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-94d71e8"
-					data-id="94d71e8"
-					data-element_type="column">
-					<div class="elementor-widget-wrap elementor-element-populated">
-						<div
-							class="elementor-element elementor-element-967b43a elementor-widget elementor-widget-thim-ekits-heading"
-							data-id="967b43a"
-							data-element_type="widget"
-							data-widget_type="thim-ekits-heading.default">
-							<div class="elementor-widget-container">
-								<div class="thim-ekits-heading thim-ekit__heading">
-									<h2 class="title">Galería</h2>
+<?php
+$args = array(
+	'post_type' => 'galeria-footer',
+	'posts_per_page' => 4, // Para obtener todos los posts
+	'orderby' => 'date',    // Ordenar por fecha
+	'order' => 'DESC',      // Orden descendente (el más reciente primero)
+);
+$query = new WP_Query($args);
+if ($query->have_posts()) : ?>
+	<div class="footer-galeria">
+		<div class="container">
+			<section
+				class="elementor-section elementor-top-section elementor-element elementor-element-45a6b9a elementor-section-full_width elementor-section-height-default elementor-section-height-default"
+				data-id="45a6b9a"
+				data-element_type="section"
+				id="home-galeria">
+				<div class="elementor-container elementor-column-gap-no">
+					<div
+						class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-94d71e8"
+						data-id="94d71e8"
+						data-element_type="column">
+						<div class="elementor-widget-wrap elementor-element-populated">
+							<div
+								class="elementor-element elementor-element-967b43a elementor-widget elementor-widget-thim-ekits-heading"
+								data-id="967b43a"
+								data-element_type="widget"
+								data-widget_type="thim-ekits-heading.default">
+								<div class="elementor-widget-container">
+									<div class="thim-ekits-heading thim-ekit__heading">
+										<h2 class="title">Galería</h2>
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<div
-							class="elementor-element elementor-element-7ea0e15 elementor-widget elementor-widget-thim-gallery"
-							data-id="7ea0e15"
-							data-element_type="widget"
-							data-widget_type="thim-gallery.default">
-							<div class="elementor-widget-container">
-								<div class="wrapper-filter-controls">
-									<div class="filter-controls">
-										<a class="filter active" data-filter="*" href="javascript:;">Todos</a>
-										<a
-											class="filter"
-											href="javascript:;"
-											data-filter=".filter-gallery-10766">Interior</a><a
-											class="filter"
-											href="javascript:;"
-											data-filter=".filter-gallery-10758">Local</a>
+							<div
+								class="elementor-element elementor-element-7ea0e15 elementor-widget elementor-widget-thim-gallery"
+								data-id="7ea0e15"
+								data-element_type="widget"
+								data-widget_type="thim-gallery.default">
+								<div class="elementor-widget-container">
+									<div class="wrapper-filter-controls">
+										<div class="filter-controls">
+											<a class="filter active" data-filter="*" href="javascript:;">Todos</a>
+											<a
+												class="filter"
+												href="javascript:;"
+												data-filter=".filter-gallery-10766">Interior</a><a
+												class="filter"
+												href="javascript:;"
+												data-filter=".filter-gallery-10758">Local</a>
+										</div>
 									</div>
-								</div>
-								<div
-									class="wrapper-gallery-filter grid row"
-									itemscope
-									itemtype="http://schema.org/ItemList">
+									<div
+										class="wrapper-gallery-filter grid row"
+										itemscope
+										itemtype="http://schema.org/ItemList">
 
-									<div class="item-photo element col-sm-4 filter-gallery-10766">
-										<div class="inner">
-											<a
-												class="fancybox"
-												data-fancybox-group="gallery"
-												href="https://goctaamazonashotel.com/wp-content/uploads/2024/08/interior-02.png"><img
-													decoding="async"
-													src="https://goctaamazonashotel.com/wp-content/uploads/2024/08/interior-02-380x310.png"
-													alt="Interior"
-													title="Interior" /></a>
-										</div>
+										<?php while ($query->have_posts()) : $query->the_post(); ?>
+											<div class="item-photo element col-sm-4 filter-gallery-10766">
+												<div class="inner">
+													<?php
+													if (has_post_thumbnail()) :
+														$thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+													?>
+														<a
+															class="fancybox"
+															data-fancybox-group="gallery"
+															href="<?= esc_url($thumbnail_url); ?>"><img
+																decoding="async"
+																src="<?= esc_url($thumbnail_url); ?>"
+																alt="<?= get_the_title() ?>"
+																title="<?= get_the_title() ?>" /></a>
+													<?php endif; ?>
+												</div>
+											</div>
+										<?php endwhile; ?>
 									</div>
-									<!--  -->
-									<div class="item-photo element col-sm-4 filter-gallery-10766">
-										<div class="inner">
-											<a
-												class="fancybox"
-												data-fancybox-group="gallery"
-												href="https://goctaamazonashotel.com/wp-content/uploads/2024/08/interior-03.png"><img
-													decoding="async"
-													src="https://goctaamazonashotel.com/wp-content/uploads/2024/08/interior-03-380x310.png"
-													alt="Interior"
-													title="Interior" /></a>
-										</div>
-									</div>
-									<div class="item-photo element col-sm-4 filter-gallery-10766">
-										<div class="inner">
-											<a
-												class="fancybox"
-												data-fancybox-group="gallery"
-												href="https://goctaamazonashotel.com/wp-content/uploads/2024/08/interior-04.png"><img
-													decoding="async"
-													src="https://goctaamazonashotel.com/wp-content/uploads/2024/08/interior-04-380x310.png"
-													alt="Interior"
-													title="Interior" /></a>
-										</div>
-									</div>
-									<div class="item-photo element col-sm-4 filter-gallery-10766">
-										<div class="inner">
-											<a
-												class="fancybox"
-												data-fancybox-group="gallery"
-												href="https://goctaamazonashotel.com/wp-content/uploads/2024/08/interior-01.png"><img
-													decoding="async"
-													src="https://goctaamazonashotel.com/wp-content/uploads/2024/08/interior-01-380x310.png"
-													alt="Interior"
-													title="Interior" /></a>
-										</div>
-									</div>
-									<div class="item-photo element col-sm-4 filter-gallery-10758">
-										<div class="inner">
-											<a
-												class="fancybox"
-												data-fancybox-group="gallery"
-												href="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-01.png"><img
-													decoding="async"
-													src="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-01-380x310.png"
-													alt="Local"
-													title="Local" /></a>
-										</div>
-									</div>
-									<div class="item-photo element col-sm-4 filter-gallery-10758">
-										<div class="inner">
-											<a
-												class="fancybox"
-												data-fancybox-group="gallery"
-												href="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-02.png"><img
-													decoding="async"
-													src="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-02-380x310.png"
-													alt="Local"
-													title="Local" /></a>
-										</div>
-									</div>
-									<div class="item-photo element col-sm-4 filter-gallery-10758">
-										<div class="inner">
-											<a
-												class="fancybox"
-												data-fancybox-group="gallery"
-												href="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-03.png"><img
-													decoding="async"
-													src="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-03-380x310.png"
-													alt="Local"
-													title="Local" /></a>
-										</div>
-									</div>
-									<div class="item-photo element col-sm-4 filter-gallery-10758">
-										<div class="inner">
-											<a
-												class="fancybox"
-												data-fancybox-group="gallery"
-												href="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-04.png"><img
-													decoding="async"
-													src="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-04-380x310.png"
-													alt="Local"
-													title="Local" /></a>
-										</div>
-									</div>
-									<div class="item-photo element col-sm-4 filter-gallery-10758">
-										<div class="inner">
-											<a
-												class="fancybox"
-												data-fancybox-group="gallery"
-												href="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-05.png"><img
-													decoding="async"
-													src="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-05-380x310.png"
-													alt="Local"
-													title="Local" /></a>
-										</div>
-									</div>
-									<div class="item-photo element col-sm-4 filter-gallery-10758">
-										<div class="inner">
-											<a
-												class="fancybox"
-												data-fancybox-group="gallery"
-												href="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-06.png"><img
-													decoding="async"
-													src="https://goctaamazonashotel.com/wp-content/uploads/2024/08/local-06-380x310.png"
-													alt="Local"
-													title="Local" /></a>
-										</div>
-									</div>
-
 								</div>
 							</div>
-						</div>
 
-						<div
-							class="elementor-element elementor-element-dd477c6 button-galeria elementor-widget elementor-widget-thim-ekits-button"
-							data-id="dd477c6"
-							data-element_type="widget"
-							data-widget_type="thim-ekits-button.default">
-							<div class="elementor-widget-container">
-								<div class="thim-ekits-button">
-									<a href="https://goctaamazonashotel.com/galeria/" role="button">
-										<span class="button-content-wrapper">
-											VER TODA LA GALERÍA
-										</span>
-									</a>
+							<div
+								class="elementor-element elementor-element-dd477c6 button-galeria elementor-widget elementor-widget-thim-ekits-button"
+								data-id="dd477c6"
+								data-element_type="widget"
+								data-widget_type="thim-ekits-button.default">
+								<div class="elementor-widget-container">
+									<div class="thim-ekits-button">
+										<a href="https://goctaamazonashotel.com/galeria/" role="button">
+											<span class="button-content-wrapper">
+												VER TODA LA GALERÍA
+											</span>
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		</div>
 	</div>
-</div>
+<?php endif; ?>
+
 <!-- END - GALERIA -->
 <!-- BEGIN - Agregamos el iframe -->
 <iframe loading="lazy"
