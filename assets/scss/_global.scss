@@ -32,3 +32,45 @@
   padding: 0;
   margin-bottom: -10px;
 }
+
+.rrss-flotante {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  &__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    flex-direction: column;
+    @media (max-width: 767px) {
+      margin-top: 40px;
+    }
+  }
+  &__item {
+    list-style: none;
+    &:nth-of-type(1) {
+      background-color: #3b5998;
+    }
+    &:nth-of-type(2) {
+      background-color: #26d366;
+    }
+  }
+  &__link {
+    color: white;
+    display: flex;
+    width: 60px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.25s;
+    &:hover {
+      color: white;
+      opacity: 0.75;
+    }
+  }
+}
