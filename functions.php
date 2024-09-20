@@ -188,3 +188,44 @@ function wpc_elementor_shortcode_servicios_espacio_last($atts)
   return $output;
 }
 add_shortcode("servicios_espacio_last", "wpc_elementor_shortcode_servicios_espacio_last");
+
+
+
+// API
+function expose_custom_post_type_in_api()
+{
+  // Asegúrate de reemplazar 'hb_room' con el slug de tu custom post type
+  register_rest_route('custom/v1', '/hb_rooms', array(
+    'methods' => 'GET',
+    'callback' => 'get_hb_rooms',
+    'permission_callback' => '__return_true',
+  ));
+}
+
+function get_hb_rooms($data)
+{
+  $args = array(
+    'post_type' => 'hb_room',
+    'posts_per_page' => -1, // Para obtener todos los posts
+  );
+
+  $query = new WP_Query($args);
+  $rooms = array();
+
+  if ($query->have_posts()) {
+    while ($query->have_posts()) {
+      $query->the_post();
+      $rooms[] = array(
+        'id' => get_the_ID(),
+        'title' => get_the_title(),
+        'content' => get_the_content(),
+        // Agrega otros campos que necesites
+      );
+    }
+    wp_reset_postdata();
+  }
+
+  return rest_ensure_response($rooms);
+}
+
+add_action('rest_api_init', 'expose_custom_post_type_in_api');

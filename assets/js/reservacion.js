@@ -20,7 +20,6 @@ const isRedirect = () => {
 };
 
 const insertAlert = () => {
-  // if (location.hash !== "#wpcf7-f10081-p10135-o1") return;
   if (location.hash === "" || !location.hash.includes("#wpcf7-")) return;
   const $siteContent = document.querySelector(".container.site-content");
   if (!$siteContent) return;
@@ -33,7 +32,7 @@ const insertAlert = () => {
   $siteContent.insertAdjacentHTML("afterbegin", $alertHtml);
   const $btnClose = document.querySelector("#alert-form button");
   // Ocultar la alerta amarilla
-  document.querySelector(".alert-form").classList.add("d-none");
+  document.querySelector(".alert-form")?.classList.add("d-none");
   $btnClose &&
     $btnClose.addEventListener("click", () => {
       document.querySelector("#alert-form").remove();
@@ -133,7 +132,7 @@ const validateForm = ($form) => {
 
   const validate = () => {
     cont = 0;
-    const $inputs = $form.querySelectorAll("input");
+    const $inputs = $form.querySelectorAll("input,select[name='your-room']");
     Array.from($inputs).forEach(($input) => {
       if ($input.value.trim().length === 0) cont++;
     });
@@ -143,12 +142,13 @@ const validateForm = ($form) => {
       : $btnSend.classList.remove("no-validate");
   };
   const addEvents = () => {
-    const $inputs = $form.querySelectorAll("input");
+    const $inputs = $form.querySelectorAll("input,select[name='your-room']");
     Array.from($inputs).forEach(($input) => {
       $input.addEventListener("keydown", validate);
       $input.addEventListener("keyup", validate);
       $input.addEventListener("focus", validate);
       $input.addEventListener("blur", validate);
+      $input.addEventListener("change", validate);
     });
   };
 
@@ -170,9 +170,12 @@ const sendForm = ($form) => {
 
     const yourName = $formCF7.querySelector(`[name="your-name"]`);
     const yourSubject = $formCF7.querySelector(`[name="your-subject"]`);
+    const $room = $form.querySelector(`[name="your-room"]`);
     if (yourName)
       yourName.value = $form.querySelector(`[name="full_name"]`).value;
-    if (yourSubject) yourSubject.value = "Reservación";
+
+    // if (yourSubject) yourSubject.value = "Reservación";
+    if (yourSubject) yourSubject.value = `Reservación - ${$room?.value || ""}`;
 
     $formCF7.submit();
 
@@ -212,13 +215,51 @@ const sendForm = ($form) => {
   });
 };
 
+const getAllRooms = async () => {
+  const endpoint = `https://goctaamazonashotel.com/wp-json/custom/v1/hb_rooms`;
+  try {
+    const response = await fetch(endpoint);
+    if (!response.ok) throw new Error("La respuesta de la red no fue correcta");
+    const dataJson = await response.json();
+    return dataJson.map((data) => data.title);
+  } catch (error) {
+    console.error("Hubo un problema con la solicitud Fetch:", error);
+  }
+};
+
+const insertSelectRoom = ($form) => {
+  const container = $form.querySelector(
+    ".col-sm-12.col-md-6:has([name='your-message'])"
+  );
+  if (!container) return;
+  getAllRooms()
+    .then((rooms) => {
+      const optionsHtml = rooms
+        .map((room) => `<option value="${room}">${room}</option>`)
+        .join("");
+
+      const selectHtml = `
+      <div class="col-sm-12 col-md-6">
+        <select class="form-control" id="your-room" name="your-room">
+          <option value="" disabled selected>Seleccione habitación</option>
+          ${optionsHtml}
+        </select>
+      </div>
+      `;
+      container.insertAdjacentHTML("beforebegin", selectHtml);
+      container.classList.remove("col-md-6");
+      validateForm($form);
+    })
+    .catch(console.log);
+};
+
 const init = () => {
   const $form = document.querySelector(`[name="hb-search-form"]`);
   populateReservationForm($form);
   changeFormReservation($form);
-  validateForm($form);
   sendForm($form);
   insertAlert();
+  insertSelectRoom($form);
 };
 
 init();

@@ -102,9 +102,12 @@ const changeFormReservation = ($form) => {
 
     const yourName = $formCF7.querySelector(`[name="your-name"]`);
     const yourSubject = $formCF7.querySelector(`[name="your-subject"]`);
+    const yourRoom = $formCF7.querySelector(`[name="your-room"]`);
     const $title = document.querySelector(
       ".summary.entry-summary > .title h4 a"
     );
+
+    if (yourRoom) yourRoom.value = $title?.textContent || "";
 
     if (yourName)
       yourName.value = $form.querySelector(`[name="full_name"]`).value;
